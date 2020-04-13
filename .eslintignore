@@ -1,0 +1,5 @@
+# files with js extension at the root dir are ignored
+/*.js
+
+node_modules
+dist
