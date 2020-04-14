@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import { startOfHour, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
 
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
+import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
@@ -13,26 +14,27 @@ appointmentsRouter.get('/', (req, res) => {
 });
 
 appointmentsRouter.post('/', (req, res) => {
-  const { provider, date } = req.body;
+  try {
+    const { provider, date } = req.body;
 
-  const parsedDate = startOfHour(parseISO(date));
+    const parsedDate = parseISO(date); // this is not a business logic (it's only a date transformation), so it stayed here, not going to the service
 
-  const findAppointmentInSameDate = appointmentsRepository.findByDate(
-    parsedDate,
-  );
+    // dependency inversion here. Passing the appointmentsRepository instance to the service
+    const createAppointment = new CreateAppointmentService(
+      appointmentsRepository,
+    );
 
-  if (findAppointmentInSameDate) {
-    return res.status(400).json({
-      error: 'This appointment date is already booked',
+    const appointment = createAppointment.execute({
+      provider,
+      date: parsedDate,
+    });
+
+    return res.json(appointment);
+  } catch (err) {
+    res.status(400).json({
+      error: err.message,
     });
   }
-
-  const appointment = appointmentsRepository.create({
-    provider,
-    date: provider,
-  });
-
-  return res.json(appointment);
 });
 
 export default appointmentsRouter;

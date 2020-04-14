@@ -1,6 +1,7 @@
 # GoBarber
 > Backend of GoBarber in Typescript
 
+Trying to use SOLID principles in this backend using the framework Express.
 
 
 
