@@ -1,14 +1,9 @@
 import { Router } from 'express';
-import { uuid } from 'uuidv4';
 import { startOfHour, parseISO, isEqual } from 'date-fns';
 
-const appointmentsRouter = Router();
+import Appointment from '../models/Appointment';
 
-interface Appointment {
-  id: string;
-  provider: string;
-  parsedDate: Date;
-}
+const appointmentsRouter = Router();
 
 const appointments: Appointment[] = [];
 
@@ -18,7 +13,7 @@ appointmentsRouter.post('/', (req, res) => {
   const parsedDate = startOfHour(parseISO(date));
 
   const findAppointmentInSameDate = appointments.find(appointment =>
-    isEqual(appointment.parsedDate, parsedDate),
+    isEqual(appointment.date, parsedDate),
   );
 
   if (findAppointmentInSameDate) {
@@ -27,11 +22,7 @@ appointmentsRouter.post('/', (req, res) => {
     });
   }
 
-  const appointment = {
-    id: uuid(),
-    provider,
-    parsedDate,
-  };
+  const appointment = new Appointment(provider, parsedDate);
 
   appointments.push(appointment);
 
