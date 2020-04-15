@@ -1,0 +1,35 @@
+version: '3.2'
+services:
+  postgresdb:
+    container_name: postgres-database
+    image: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data # to store the data created even when 'docker-compose down'
+      # - ./scripts/soccer_db.sql:/docker-entrypoint-initdb.d/1-soccer_db.sql
+      # - ./schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      # - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    networks:
+      - barbershopnetwork
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB} # barbershopdb
+      TZ: GMT
+
+  # you can use this to see the tables on the web
+  # adminer:
+  #   depends_on:
+  #     - postgresdb
+  #   container_name: adminer-web
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
+  #   networks:
+  #     - barbershopnetwork
+
+networks:
+  barbershopnetwork:
