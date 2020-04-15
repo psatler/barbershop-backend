@@ -27,3 +27,15 @@ docker-compose up
 - Prettier
 - Uuidv4
 - Date Fns
+
+
+#### Acknowledments
+
+Some TypeORM CLI commands:
+```
+yarn typeorm migration:create -n CreateAppointments - to create a migration named CreateAppointments
+
+yarn typeorm migration:show - to display the migrations already run
+
+yarn typeorm migration:revert - to revert the migration which will drop the tables those migrations refer to
+```
