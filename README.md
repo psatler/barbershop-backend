@@ -21,6 +21,8 @@ docker-compose up
 #### Dependencies used
 
 - Express
+- TypeORM
+- PG (for Postgres)
 - ESLint
 - Prettier
 - Uuidv4
