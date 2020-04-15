@@ -18,7 +18,7 @@ docker-compose up
 ```
 
 
-#### Dependencies used
+## Dependencies used
 
 - Express
 - TypeORM
@@ -29,11 +29,13 @@ docker-compose up
 - Date Fns
 
 
-#### Acknowledments
+## Acknowledments
 
 Some TypeORM CLI commands:
 ```
 yarn typeorm migration:create -n CreateAppointments - to create a migration named CreateAppointments
+
+yarn typeorm migration:run - to execute the migrations
 
 yarn typeorm migration:show - to display the migrations already run
 
