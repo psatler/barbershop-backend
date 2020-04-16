@@ -51,5 +51,5 @@ yarn typeorm migration:run - to execute the migrations
 
 yarn typeorm migration:show - to display the migrations already run
 
-yarn typeorm migration:revert - to revert the migration which will drop the tables those migrations refer to
+yarn typeorm migration:revert - to revert the last migration which will drop the table created
 ```
