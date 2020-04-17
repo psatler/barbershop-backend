@@ -34,6 +34,7 @@ docker-compose up
 - Express
 - TypeORM
 - PG (for Postgres)
+- JWT
 - ESLint
 - Prettier
 - Uuidv4
