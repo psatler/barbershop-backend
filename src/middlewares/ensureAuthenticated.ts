@@ -3,6 +3,8 @@ import { verify } from 'jsonwebtoken';
 
 import authConfig from '../config/auth';
 
+import AppError from '../errors/AppError';
+
 interface TokenPayload {
   iat: string; // issued at
   exp: string; // expires in
@@ -18,7 +20,7 @@ export default function ensureAuthenticated(
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    throw new Error('Token is missing / not provided');
+    throw new AppError('Token is missing / not provided', 401);
   }
 
   // Bearer <token>
@@ -36,6 +38,6 @@ export default function ensureAuthenticated(
 
     return next();
   } catch {
-    throw new Error('Invalid token');
+    throw new AppError('Invalid token', 401);
   }
 }
