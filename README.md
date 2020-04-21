@@ -40,6 +40,7 @@ docker-compose up
 - Uuidv4
 - Date Fns
 - [Reflect Metadata](https://github.com/rbuckton/reflect-metadata)
+- Cors
 
 
 ## Acknowledments
