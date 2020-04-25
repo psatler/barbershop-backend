@@ -45,7 +45,8 @@ docker-compose up
 
 ## Acknowledments
 
-Some TypeORM CLI commands:
+- Some TypeORM CLI commands:
+
 ```
 yarn typeorm migration:create -n CreateAppointments - to create a migration named CreateAppointments
 
@@ -55,3 +56,6 @@ yarn typeorm migration:show - to display the migrations already run
 
 yarn typeorm migration:revert - to revert the last migration which will drop the table created
 ```
+
+- [Here](https://www.restapitutorial.com/httpstatuscodes.html) a good reference for HTTP Status Codes.
+
