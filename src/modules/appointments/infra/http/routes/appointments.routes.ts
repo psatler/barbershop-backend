@@ -7,9 +7,6 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 
 const appointmentsRouter = Router();
 
-// instatiating the repository so we pass it to the service
-const appointmentsRepository = new AppointmentsRepository();
-
 appointmentsRouter.use(ensureAuthenticated);
 
 // appointmentsRouter.get('/', async (req, res) => {
@@ -23,6 +20,8 @@ appointmentsRouter.post('/', async (req, res) => {
 
   const parsedDate = parseISO(date); // this is not a business logic (it's only a date transformation), so it stayed here, not going to the service
 
+  // instatiating the repository so we pass it to the service
+  const appointmentsRepository = new AppointmentsRepository();
   const createAppointment = new CreateAppointmentService(
     appointmentsRepository,
   );
