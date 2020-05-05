@@ -42,6 +42,7 @@ docker-compose up
 - [Reflect Metadata](https://github.com/rbuckton/reflect-metadata)
 - [Tsyringe](https://github.com/microsoft/tsyringe): to apply dependency injection
 - Cors
+- Jest with ts-jest (for testing)
 
 
 ## Acknowledments
