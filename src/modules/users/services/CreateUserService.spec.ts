@@ -38,7 +38,7 @@ describe('CreateUser', () => {
     });
 
     // creating a second user with the same email of the first one
-    expect(
+    await expect(
       createUserService.execute({
         name: 'John Doe',
         email,
