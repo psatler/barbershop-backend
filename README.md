@@ -47,6 +47,7 @@ docker-compose up
 - Date Fns
 - [Reflect Metadata](https://github.com/rbuckton/reflect-metadata)
 - [Tsyringe](https://github.com/microsoft/tsyringe): to apply dependency injection
+- [Nodemailer](https://nodemailer.com/about/) for sending emails.
 - Cors
 - Jest with ts-jest (for testing)
 
