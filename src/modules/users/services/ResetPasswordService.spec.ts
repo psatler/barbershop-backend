@@ -90,7 +90,3 @@ describe('ResetPasswordService', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 });
-
-// TODO: 2h expiration time for token
-// TODO: User Token non existent
-// TODO: User non existent
