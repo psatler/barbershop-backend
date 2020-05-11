@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { getDaysInMonth, getDate } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 import User from '@modules/users/infra/typeorm/entities/User';
@@ -38,14 +39,27 @@ class ListProviderMonthAvailabilityService {
       },
     );
 
-    console.log(appointmentsInMonth);
+    const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1)); // minus because of JS Date
 
-    return [
-      {
-        day: 1,
-        available: false,
-      },
-    ];
+    const eachDayArray = Array.from(
+      { length: numberOfDaysInMonth },
+      (_, index) => index + 1,
+    );
+
+    console.log(eachDayArray);
+
+    const availability = eachDayArray.map(day => {
+      const appointmentsInDay = appointmentsInMonth.filter(appointment => {
+        return getDate(appointment.date) === day;
+      });
+
+      return {
+        day,
+        available: appointmentsInDay.length < 10,
+      };
+    });
+
+    return availability;
   }
 }
 
