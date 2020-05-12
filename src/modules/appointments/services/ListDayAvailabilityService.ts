@@ -1,10 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { getHours, isAfter } from 'date-fns';
 
-import AppError from '@shared/errors/AppError';
-import User from '@modules/users/infra/typeorm/entities/User';
-import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
 interface IRequestDTO {
