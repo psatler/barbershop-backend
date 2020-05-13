@@ -1,5 +1,14 @@
 version: '3.2'
 services:
+  mongodbservice:
+    container_name: mongo-database
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    networks:
+      - barbershopnetwork
+
   postgresdb:
     container_name: postgres-database
     image: postgres
