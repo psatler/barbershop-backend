@@ -40,6 +40,7 @@ docker-compose up
 - Express
 - TypeORM
 - PG (for Postgres)
+- Mongodb
 - JWT
 - ESLint
 - Prettier
