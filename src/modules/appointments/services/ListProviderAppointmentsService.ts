@@ -46,7 +46,7 @@ class ListProviderAppointmentsService {
         },
       );
 
-      console.log('Queried from DB');
+      // console.log('Queried from DB');
 
       await this.cacheProvider.save(cachedKey, appointments);
     }

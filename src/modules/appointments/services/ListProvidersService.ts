@@ -33,7 +33,7 @@ class ListProvidersService {
         except_user_id: user_id,
       });
 
-      console.log('Query done in datase');
+      // console.log('Query done in datase');
 
       await this.cacheProvider.save(`providers-list:${user_id}`, users);
     }
