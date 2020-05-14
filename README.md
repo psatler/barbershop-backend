@@ -41,6 +41,7 @@ docker-compose up
 - TypeORM
 - PG (for Postgres)
 - Mongodb
+- [IoRedis](https://github.com/luin/ioredis)
 - JWT
 - ESLint
 - Prettier
