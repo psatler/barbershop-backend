@@ -10,14 +10,14 @@ export default class AppointmentsController {
     const user_id = req.user.id;
     const { provider_id, date } = req.body;
 
-    const parsedDate = parseISO(date); // this is not a business logic (it's only a date transformation), so it stayed here, not going to the service
+    // const parsedDate = parseISO(date); // this is not a business logic (it's only a date transformation), so it stayed here, not going to the service
 
     const createAppointment = container.resolve(CreateAppointmentService);
 
     const appointment = await createAppointment.execute({
       provider_id,
       user_id,
-      date: parsedDate,
+      date,
     });
 
     return res.json(appointment);
