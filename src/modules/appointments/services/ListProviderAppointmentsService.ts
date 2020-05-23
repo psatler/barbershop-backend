@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 // import AppError from '@shared/errors/AppError';
 
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
+import { classToClass } from 'class-transformer';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 import Appointment from '../infra/typeorm/entities/Appointment';
 
@@ -48,7 +49,7 @@ class ListProviderAppointmentsService {
 
       // console.log('Queried from DB');
 
-      await this.cacheProvider.save(cachedKey, appointments);
+      await this.cacheProvider.save(cachedKey, classToClass(appointments));
     }
 
     return appointments;
