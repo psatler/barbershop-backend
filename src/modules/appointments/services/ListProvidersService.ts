@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 // import AppError from '@shared/errors/AppError';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
@@ -35,7 +36,10 @@ class ListProvidersService {
 
       // console.log('Query done in datase');
 
-      await this.cacheProvider.save(`providers-list:${user_id}`, users);
+      await this.cacheProvider.save(
+        `providers-list:${user_id}`,
+        classToClass(users),
+      );
     }
 
     return users;
