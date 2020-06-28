@@ -34,6 +34,18 @@ To get the database up, the easiest way is using docker. So, please be sure to i
 docker-compose up
 ```
 
+#### Building for production
+
+```
+yarn build
+```
+
+With the database services up and running, we can start the application with:
+
+```
+node dist/shared/infra/http/server.js
+```
+
 
 ## Dependencies used
 
